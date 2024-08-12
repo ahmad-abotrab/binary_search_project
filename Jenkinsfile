@@ -8,15 +8,14 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Build and Test in Docker') {
             steps {
-                sh 'pip3 install -r requirements.txt' // Install dependencies (if any)
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                sh 'python3 -m unittest discover -s tests' // Run all tests in the 'tests' directory
+                script {
+                    sh '''
+                    docker run --rm -v $PWD:/workspace -w /workspace python:3.11 \
+                    sh -c "pip3 install -r requirements.txt && python3 -m unittest discover -s tests"
+                    '''
+                }
             }
         }
     }
