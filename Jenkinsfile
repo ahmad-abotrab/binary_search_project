@@ -20,7 +20,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'python -m unittest discover -s tests' // Run all tests in the 'tests' directory
+                sh 'python3 -m unittest discover -s tests' // Run all tests in the 'tests' directory
             }
         }
     }

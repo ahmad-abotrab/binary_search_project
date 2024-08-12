@@ -2,7 +2,6 @@
 
 import unittest
 from src.binary_search import binary_search
-
 class TestBinarySearch(unittest.TestCase):
 
     def test_element_found(self):
